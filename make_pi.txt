@@ -1,0 +1,65 @@
+Stappenplan installeren raspberrypi
+
+1)	Download newest raspbian
+2)	Flash to SD card
+3)	Change raspi-config
+		sudo raspi-config
+			3.1) Enable SSH
+			3.2) Enable SPI
+4)	Reboot
+		sudo reboot
+5)	Change SSH root
+		sudo nano /etc/ssh/sshd_config
+		PermitRootLogin yes
+6)	Restart SSH
+		sudo /etc/init.d/ssh restart
+7)	Set root password
+		sudo passwd root
+8)	Set network
+		8.1) sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+		8.2) sudo nano /etc/network/interfaces
+9)	Reboot
+		sudo reboot
+10)	Install git
+		sudo apt install git
+11) Install zookeeper
+		sudo apt install zookeeper
+		sudo apt install libzookeeper-mt-dev
+		sudo apt install zookeeper-bin
+		sudo apt install zookeeeperd
+12)	Install newest Cmake (~ 1 hour)
+		wget https://cmake.org/files/v3.11/cmake-3.11.0.tar.gz
+		tar -xvzf cmake-3.11.0.tar.gz
+		cd cmake-3.11.0
+		./configure
+		make
+		sudo make install
+13) Install newest Boost (~ 1.5 hour)
+		wget https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.gz
+		tar -xvzf boost_1_66_0.tar.gz
+		cd boost_1_66_0
+		./bootstrap.sh
+		./b2
+		sudo ./b2 install
+14) Install newest ZeroMQ
+		echo "deb http://download.opensuse.org/repositories/network:/messaging:/zeromq:/release-stable/Debian_9.0/ ./" >> /etc/apt/sources.list
+		wget https://download.opensuse.org/repositories/network:/messaging:/zeromq:/release-stable/Debian_9.0/Release.key -O- | sudo apt-key add
+		apt-get install libzmq3-dev
+15) Install yaml-cpp
+		sudo apt install libyaml-cpp-dev
+15)	Compile PiFairMQ (~ 0.5 hour)
+		git clone https://github.com/valvy/PiFairMQ.git
+		cd PiFairMQ
+		mkdir build
+		cd build/
+		cmake ..
+		make
+		cd FairMQ
+		sudo cp libFairMQ.so /usr/lib/
+16) Compile O2Balancer 
+		git clone https://github.com/SoftwareForScience/O2-Balancer.git
+		cd O2-Balancer
+		mkdir build
+		cd build/
+		cmake ..
+		make
