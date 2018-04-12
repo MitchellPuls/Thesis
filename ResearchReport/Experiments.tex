@@ -57,29 +57,31 @@ The Infomation Node serves 2 purposes. At firs it generates the TFs that are sen
 Library/Tool & Version \\ \hline
 FairMQ & \\ \hline
 ZeroMQ & 4.2.5\\ \hline
-Zookeeper & \\ \hline
+Zookeeper & 3.4.9 \\ \hline
 Cmake & 3.11.0 \\ \hline
 Boost & 1.66.0 \\ \hline
-Yaml-cpp & \\ \hline
+Yaml-cpp & 0.5.2 \\ \hline
 Compiler & gcc 6.3.0 20170516 (Raspbian 6.3.0-18+rpi1+deb9u1)\\ \hline
 \end{tabular}
 \caption{Dependencies software}
 \end{table}
 
 \section{Data analysis tools}
-In order to stay consistent with the previous experiment, the same tools will be used to create and visualize the data. This can be found at \\ https://github.com/valvy/BalancerScripts. These scripts are written in Python and ROOT to generate graphs and histograms from the log files received from the software. The dependencies are specified in table 5.5.
+In order to stay consistent with the previous experiment, the same tools will be used to create and visualize the data. This can be found at \\ https://github.com/valvy/BalancerScripts. These scripts are written in Python and ROOT to generate graphs and histograms from the log files received from the software. The dependencies are specified in table 5.4.
 
-\begin{table}[htb]
+\begin{table}[ht]
 \begin{tabular}{| l | l |}
 \hline
 Tool & Version \\ \hline
-Raspbian & Stretch (Debian 9) \\ \hline
-ROOT & \\ \hline
+Raspbian & Centos 7 \\ \hline
+ROOT & 6.13.02 \\ \hline
 Python & 2.7.13 \\ \hline
-Ansible & \\ \hline
+Ansible & 2.2.1 \\ \hline
 \end{tabular}
 \caption{Dependencies for the analysis scripts}
 \end{table}
+
+\newpage
 
 \section{Experiments}
 In order to check whether or not the Information Node has any issues with increased numbers of FLPs and EPNs, the same experiments need to be done use described in the previous report (van der Heijden, 2018, p23-p27) but will be briefly summarized again. The experiments are done in two steps. First the experiments need to be run using the same amount of FLPs and EPNs to verify whether or not the new setup of Pi clusters are able to give the same result. Second the experiments need to be run again using more FLPs and EPNs to check if it indeed does have an effect on the Information Node.
