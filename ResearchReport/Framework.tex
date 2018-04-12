@@ -1,0 +1,33 @@
+\section{$O^2$ Balancer}
+$O^2$ Balancer is a framework of CERN used for simulation experiments for ALICE. The code is open source and licensed under the GNU General Public License V3.0.
+
+\subsection{Devices}
+The $O^2$ Balancer consist of a cluster of 1750 computers, divided in 250 First Level Processors (FLPs) and 1500 Event  Nodes (EPNs) These computers are meant to process the data stream coming from ALICE. All of these computers are monitored using an Information Node.
+
+\subsubsection*{First Level Processors}
+The FLPs are the first computers in the line. They recieve the data stream (approximately 1.1TB/s) from ALICE and need to distribute that to the next line of computer. In order to do that it takes the data received between two heartbeats, and compresses that into something that's called a Sub Timeframe (STF). A heartbeat lasts for about 20ms. It will then send this STF to the next line of computers which are the EPNs. Every EPN needs to get the same amount of STFs at the same time for recreation purposes.
+
+\subsubsection*{Event Processing Nodes}
+The next line of computers are the EPNs. These receive the STFs from the FLPs and then compress them back into a time frame (TF). This compression reduces it's size by a factor of eight. These TFs are then stored for further use.
+
+\subsubsection*{Information Node}
+There is one final computer which is the Information Node (IN). This computer keeps track of all the FLPs and EPNs that are online and makes sure that FLPs don't send data to offline EPNs.
+
+\section{Raspberry Pi}
+% Aanpassen aan daadwerkelijke aantal Pi's en versie van de Pi
+Raspberry Pi is a  low cost small computer used for prototyping projects. These projects can reach go from small sensor applications, to bigger host-server applications. The Raspberry pi used for this research is the model 3 B+ variant.
+
+\section{FairMQ}
+The transport layer used for the $O^2$ Balancer is FairMQ. This is a transport layer from the larger framework FairRoot created by GSI Darmstadt. In order to acommidate the smaller processing size of the Raspberry Pi, a trimmed down version of FairRoot is used which is just FairMQ. This is a data transport layer used to send data in between the IN, FLPs and EPNs.
+
+\section{Zookeeper}
+Zookeeper is a program made by Apache to regulate the whole load balancing process. It is run on the Information Node and from there pings to all EPNs to check whether they are online or not. It then creates a list of online EPNs which it gives to the FLPs so that they know to what EPN to send data to. The frequency of these pings are called the Ticktime.
+
+\section{Ansible}
+Ansible is a deployment software used to create simple automation for large infrastructures. This is used to automate repetitive task for the experiment, and for deploying software stacks to every unit. 
+
+\section{Fail-over}
+When an EPN goes offline it is called a Fail-over. When this happens, Zookeeper will know that it is offline and will notify the FLPs to not send any data to these EPNs anymore.
+
+\section{Blacklist Algorithm}
+The algorithm used in the previous experiment is a Blacklist Algorithm. This algorithm constantly keeps a list of online channels which is updated by the Information Node using Zookeeper. Once Zookeeper realizes that an EPN is offline, it will update the list so that the algorithm will skip that offline EPN. With this list of online EPNs, the algorithm uses a Round Robin approach to distribute the STF over the EPNs. A way to implement the Blacklist algorithm is shown in listing x

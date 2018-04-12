@@ -1,0 +1,14 @@
+\section{ALICE}
+ALICE stands for A Large Ion Collider Experiment, and is a detector mounted on the Large Hadron Collider at CERN. CERN is a European organization for  nuclear research, situated in Geneve Switserland. ALICE's main function is to study matter at extreme energy densities, where matter turns into a form called quark-gluon plasma.
+
+\section{Load Balancing}
+The data stream that comes from ALICE is equal to about 1.1 Terabyte per second. All of this data comes in what is known as a heartbeat. This heartbeat gets distributed over 268 First Level Processors and funneled through	1500 Event Processing Nodes. The efficient distribution of this process is what is known as Load Balancing. All of these computers would be monitored by an Information Node.
+
+\section{Research}
+This research is a continuation of a previous research done by Heiko van der Heijden. His results show that of the two algorithms tested, Re-initialization and Blacklist, that the Blacklist algorithm has fewer Time Frames lost.\\
+Even though the same ratio of FLPs to EPNs that is situated at CERN was used (1/6), there were fewer computers used than at CERN. Because of this it is not sure whether or not the Information Node is able to handle 1700+ computers as compared to the 15 computers used in the experiment. This research is focused around the capability of the Information Node monitoring a higher number of FLPs and EPNs and what the effects are on the results compared to the previous experiment.
+
+\section{Research Model}
+Contrary to the previous research, which used a cluster of computers situated at Nikhef Amsterdam, this research will be conducted using a cluster of Raspberry Pi's. The first step is to recreate the previous experiment which was focused around the various ticktimes of Zookeeper. After recreating the first experiment, the same experiment will be conducted with a higher numbers of computers to see what the results are. \\
+All technical documentation of what everything is will be explained in the next section including the definition of the experiments.
+The next chapter will go more in depth of the prototype made for the experiment and it's difficulties that came with it. The following chapter looks at that the results from the  executed experiments. After this follows an analysis of the results of the experiment. Finally a conclusion and recommendations.
