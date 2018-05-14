@@ -1,6 +1,6 @@
 This chapter goes more in depth of the specifics on the experiments conducted. It describes the exact hardware specifications and software libraries used. It also defines all the different experiments and includes several figures for added information.
 \section{Hardware}
-The hardware used for this experiment are specially designed clusters made with Raspberry Pi's 3 model B+. These Pi's are assigned using the same ratio of FLPs and EPNs at CERN (1:6) and 1 Information Node. The Pi's are modified with an extra Ethernet port. The exact specifications are in table 5.1:
+The hardware used for this experiment are specially designed clusters made with Raspberry Pi's 3 model B+. These Pi's are assigned using the same ratio of FLPs and EPNs at CERN (1:6) and 1 Information Node. The Pi's are modified with an extra Ethernet port. The exact specifications are in table 3.1.
 
 \begin{table}[htb]
 \begin{tabular}{| l | l |}
@@ -13,14 +13,14 @@ Operating System & Raspbian Stretch (Debian 9)\\ \hline
 \caption{Specifications modified Raspberry Pi 3 model B+}
 \end{table}
 
-Everything is setup and built from a single server unit. The IP addresses are also managed from this unit. Specifications are in table 5.2:
+Everything is setup and built from a single server unit. The IP addresses are also managed from this unit. Specifications are in table 3.2:
 
 \begin{table}[htb]
 \begin{tabular}{| l | l |}
 \hline
-Processor & Intel Xeon\\ \hline
-RAM & \\ \hline
-Network & \\ \hline
+Processor & Cortex-A53 1.4GHZ\\ \hline
+RAM & 1GB PLDDR2 SDRAM\\ \hline
+Network & 300MbE\\ \hline
 Operating System & Raspbian Stretch (Debian 9)\\ \hline
 \end{tabular}
 \caption{Specifications management server}
@@ -28,16 +28,35 @@ Operating System & Raspbian Stretch (Debian 9)\\ \hline
 
 \newpage
 
-The network configuration consists of a bidirectional connection of :
+The network configuration consists of a bidirectional connection. This is used to reduce the bottleneck over one interface. Load Balancing is done over the first interface, and monitoring is done over the second interface. Figure 3.1 shows a network overview:
 \begin{figure}[htb]
     \centering
-    \includegraphics[scale=0.5]{./graphics/chapter5/Network_thesis.pdf}
+    \includegraphics[scale=0.5]{./graphics/Network_thesis.pdf}
     \caption{Network setup}
 \end{figure}
 
-\newpage
+The clusters of Pi's are build using sets of four Raspberry Pi 3 Model B+ with extra ethernet interfaces. These are connected to each other using two tp-link TL-SF100D switches. From these switches the sets of Pi's are connected through one Juniper EX3400 Ethernet switch. Specifications are in table 3.3.
 
-The clusters of pi's are build using a 
+\begin{table}[htb]
+\begin{tabular}{| l | l |}
+\hline
+Switch & Speed \\ \hline
+tp-link TL-SF100D & 10/100Mbps \\ \hline
+Juniper EX3400 & 1/10GbE \\
+\hline
+\end{tabular}
+\caption{Ethernet switch speeds}
+\end{table}
+
+\subsection{Complications}
+The second interface is obtained using a LogiLink UA0025C USB2.0 to Ethernet adapter. This adapter has a speed of 10MbE/100MbE and is primarily used by zookeeper to register which Pi is still running. During the build of the prototype there was also an option of using an ENC28J60 Ethernet board instead. This would be plugged onto the GPIO pins on the Raspberry Pi. This board is a lot slower than the LogiLink though, clocking in at around 380 KB/s. 
+
+\begin{figure}[htb]
+	\includegraphics[scale=0.6]{./graphics/gpio_ethernet_speed.jpg}
+	\caption{ENC28J60 Ethernet board connection speed}
+\end{figure}
+
+At first the experiments were done using one set of four Pi's using the ENC28J60 boards, and three sets of four Pi's using the LogiLink adapter. During these experiments it was found out that the ENC28J60 boards weren't that reliable. The FLPs and Information Node were using these interfaces, but during tests they would completely disable and ruin the tests results. After that an experiment was done by swapping the FLPs and Information Node with EPNs. This result showed that the specific EPNs would disable midway through as well. Because of this the one set of Pi's was also converted to use the LogiLink instead.
 
 \section{Software}
 The software used is found at https://github.com/SoftwareForScience/O2-Balancer. It consists of 3 executable programs to represent an FLP, EPN and Information Node. These programs are send to the devices to represent their respective units. Apart from that it uses a slightly modified version of FairRoot
@@ -47,12 +66,11 @@ Since only the FairMQ
  part is needed for the programs to run it has been split off from this code.\\
 The Infomation Node serves two purposes. At first it generates the TFs that are send to the FLPs using FairMQ. It also receives notifications from the EPNs when they have received the full TF from the FLPs again. The configuration is done using YAML files. A diagram of the connections and dependencies are as followed.
 
-%\begin{figure}[htb]
-%    \centering
-%    \textbf{Your title}\par\medskip
-%    \includegraphics[scale=0.3]{}
-%    \caption{Block diagram of the cluster connections (van der Heijden, 2018, p. 22)}
-%\end{figure}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.7]{./graphics/connection_diagram.png}
+    \caption{Block diagram of the cluster connections (van der Heijden, 2018, p. 22)}
+\end{figure}
 
 \begin{table}[htb]
 \begin{tabular}{| l | l |}
@@ -69,8 +87,11 @@ Compiler & gcc 6.3.0 20170516 (Raspbian 6.3.0-18+rpi1+deb9u1)\\ \hline
 \caption{Dependencies software}
 \end{table}
 
+\newpage
+\newpage
+
 \section{Data analysis tools}
-In order to stay consistent with the previous experiment, the same tools will be used to create and visualize the data. This can be found at \\ https://github.com/valvy/BalancerScripts. These scripts are written in Python and ROOT to generate graphs and histograms from the log files received from the software. The dependencies are specified in table 5.4.
+In order to stay consistent with the previous experiment, the same tools will be used to create and visualize the data. This can be found at \\ https://github.com/valvy/BalancerScripts. These scripts are written in Python and ROOT to generate graphs and histograms from the log files received from the software. The dependencies are specified in table 3.5.
 
 \begin{table}[ht]
 \begin{tabular}{| l | l |}
@@ -92,42 +113,39 @@ In order to check whether or not the Information Node has any issues with increa
 \subsection{Experiment one}
 \textbf{Ticktime influence on the Blacklist algorithm with one fail-over.}
 \\\\
-The first experiment uses a fixed sample size to be sent from the Information Node, and will have 1 fail-over during its run. This sample size is set to hundred-forty kilobyte and 
-the heartbeat rate is set to twenty milliseconds. This heartbeat is set at the same rate used at CERN. This sample size is set to accommodate the slower Ethernet and processing speed of Raspberry Pi as compared to units used in the previous experiment (van der Heijden, 2018, p.23). \\
-This experiment will disable one EPN when it recieves the first STF from hearbeat 3.000. Then special scripts will parse the logfiles between heartbeat 2.000 and 10.000 to have enough of a buffer to read from. A flowchart can be found in figure 5.3.
+The first experiment uses a fixed sample size to be sent from the Information Node, and will have 1 fail-over during its run. This sample size is set to 100 kilobyte and the heartbeat rate is set to twenty milliseconds. This heartbeat is set at the same rate used at CERN. This sample size is set to accommodate the slower Ethernet and processing speed of Raspberry Pi as compared to units used in the previous experiment (van der Heijden, 2018, p.23). \\
+This experiment will disable one EPN when it recieves the first STF from hearbeat 3.000. Then special scripts will parse the logfiles between heartbeat 2.000 and 10.000 to have enough of a buffer to read from. A flowchart can be found in figure 3.4.
 
-%\begin{figure}[htb]
-%    \centering
-%    \textbf{Your title}\par\medskip
-%    \includegraphics[scale=0.3]{}
-%    \caption{Flow char experiment (van der Heijden, 2018, p. 24)}
-%\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.3]{./graphics/ex1.png}
+    \caption{Flow char experiment one}
+\end{figure}
 
+\newpage
 \subsection{Experiment two}
 \textbf{Ticktime influence on the Blacklist algorithm with all but one fail-over.}
 \\\\
-The same heartbeat rate and sample size are used from experiment one. For this experiment the first EPN will disabled at heartbeat 2.000. After that every 1.000 heartbeats an additional EPN will be disabled until there is only 1 left. Scripts will parse all the logs to check how many TFs were lost during this progress. A flowchart can be found in figure 5.4.
+The same heartbeat rate and sample size are used from experiment one. For this experiment the first EPN will disabled at heartbeat 2.000. After that every 1.000 heartbeats an additional EPN will be disabled until there is only 1 left. Scripts will parse all the logs to check how many TFs were lost during this progress. A flowchart can be found in figure 3.5.
 
-%\begin{figure}[htb]
-%    \centering
-%    \textbf{Your title}\par\medskip
-%    \includegraphics[scale=0.3]{}
-%    \caption{Flow chart random init experiment (van der Heijden, 2018, p. 25)}
-%\end{figure}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.3]{./graphics/ex2.png}
+    \caption{Flow chart experiment two}
+\end{figure}
 
 \subsection{Experiment three}
 \textbf{Ticktime influence on the Blacklist algorithm with all but one fail-over with random sample size.}
 \\\\
-The same heartbeat rate is used from experiment one. A random sample size will be generated from the FLPs between .. \& .. . Apart from that the same configuration will be used as in experiment two. The first EPN will be disabled at heartbeat 2.000 and after that every 1.000 heartbeats an additional EPN will be disabled. A flowchart can be found in figure 5.5.
+The same heartbeat rate is used from experiment one. A random sample size will be generated from the FLPs with a average size of 100 kilobyte . Apart from that the same configuration will be used as in experiment two. The first EPN will be disabled at heartbeat 2.000 and after that every 1.000 heartbeats an additional EPN will be disabled. A flowchart can be found in figure 3.6.
 
-%\begin{figure}[htb]
-%    \centering
-%    \textbf{Your title}\par\medskip
-%    \includegraphics[scale=0.3]{}
-%    \caption{Flow chart random experiment (van der Heijden, 2018, p. 26)}
-%\end{figure}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.3]{./graphics/ex3.png}
+    \caption{Flow chart experiment 3}
+\end{figure}
 
 \subsection{Experiment four}
 \textbf{Ticktime influence on the Blacklist algorithm with all but one fail-over at once.}
 \\\\
-The same heartbeat rate is used from experiment one. For this experiment all but one EPN will be disabled at heartbeat 3.000. After that the system will run for another 7.000 heartbeats to get enough of a buffer to read from. A flowchart can be found in figure 5.6.
+The same heartbeat rate is used from experiment one. For this experiment all but one EPN will be disabled at heartbeat 3.000. After that the system will run for another 7.000 heartbeats to get enough of a buffer to read from. A flowchart can be found in figure 3.7.
