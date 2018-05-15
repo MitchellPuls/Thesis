@@ -4,6 +4,8 @@
 \usepackage{longtable}
 \usepackage{array}
 
+\pagestyle{headings}
+
 \title{Effects of the EPNs and FLPs on the Information Node for ALICE\\Cern}
 \author{M.Q Puls}
 \date{2018}
@@ -14,7 +16,7 @@
 
 \newpage
 
-\begin{tabular}{| l | l |}
+\resizebox{\textwidth}{!}{\begin{tabular}{| l | l |}
 \hline
 Title & Effects of the EPNs and FLPs on the Information Node for ALICE \\ \hline
 Name & Mitchell Quinn Puls \\ \hline
@@ -30,11 +32,14 @@ Company & University of Amsterdam \\ & Software for Science \\ & Wibautstraat 2-
 Company Supervisor & Dr. Marten Teitsma \\ \hline
 Period & Feb. 2018 - Jul 2018 \\ 
 \hline
-\end{tabular}
+\end{tabular}}
 
 \newpage
 
+\begin{center}
 \section*{Preface}
+%\input{Preface.tex}
+\end{center}
 
 \newpage
 
@@ -50,42 +55,33 @@ Period & Feb. 2018 - Jul 2018 \\
 
 \input{Introduction.tex}
 
-\newpage
-
 \chapter{Framework}
 
 \input{Framework.tex}
-
-\newpage
 
 \chapter{Experiments}
 
 \input{Experiments.tex}
 
-\newpage
-
 \chapter{Results}
 
 \input{Results.tex}
 
-\newpage
-
 \chapter{Conclusion}
 
-\section*{Bibliography}
-DIT IS NOG NIET APA WEET IK\\
-https://home.cern/about/experiments/alice\\
-https://home.cern/about\\
-https://fairroot.gsi.de/?q=about\\
-https://github.com/FairRootGroup/FairRoot\\
-https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/\\
-https://www.ansible.com/overview/it-automation\\
-https://www.juniper.net/assets/us/en/local/pdf/datasheets/1000581-en.pdf\\
-%https://www.tp-link.com/us/products/details/cat-5581_TL-SF1005D.html\\
-https://github.com/SoftwareForScience/O2-Balancer\\
+%\input{Conclusion.tex}
 
-\section{Appendix}
+\chapter{Bibliography}
 
+\input{Bibliography.tex}
+
+\appendix
+\addcontentsline{toc}{chapter}{Appendices}
+\chapter*{Appendices}
+\renewcommand{\thesection}{\Alph{section}}
+\section{Glossary}
+\input{Glossary.tex}
+\section{Planning as of 25/04/2018}
 \input{Planning.tex}
 
 \end{document}
