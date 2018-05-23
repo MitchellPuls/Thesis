@@ -4,6 +4,7 @@
 The results of the experiment are shown in table ~\ref{table:Ex1MitchResults}. It shows that there is a linear line going up with the amount of TFs lost compared to ticktime. It also shows that the mean and standard deviation at ticktime 20 are round. This would be because of the ticktime being in sync with the heartbeat rate.
 
 \begin{table}[h!]
+\caption*{\textbf{Experiment one using a cluster of Raspberry Pi's}}
 \begin{tabular}{| l | l | l |}
 \hline
 Ticktime & Mean TF loss & Standard Deviation \\ \hline
@@ -23,6 +24,7 @@ Ticktime & Mean TF loss & Standard Deviation \\ \hline
 ~\\ If we compare this to the previous experiment shown in table ~\ref{table:Ex1HeikoResults}, we can see that there is a small difference in the mean of the TFs lost, and some small variations in the standard deviation.
 
 \begin{table}[h!]
+\caption*{\textbf{Experiment one using a cluster on Nikhef}}
 \begin{tabular}{| l | l | l |}
 \hline
 Ticktime & Mean TF loss & Standard Deviation \\ \hline
@@ -45,6 +47,7 @@ Ticktime & Mean TF loss & Standard Deviation \\ \hline
 Table ~\ref{table:Ex2MitchResults} shows the lost TFs per ticktime/EPN ratio. For every extra EPN that is lost, the lost TFs increase in a linear motion. This is compliant with the previous experiment. These results are shown in table ~\ref{table:Ex2HeikoResults}. A histogram of ticktime 5 shown at ~\ref{Ex2Histogram} shows that the standard deviation is 0.9568.
 
 \begin{table}[h!]
+\caption*{\textbf{Experiment two using a cluster of Raspberry Pi's}}
 \resizebox{\textwidth}{!}{\begin{tabular}{| p{0.1\linewidth} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} |}
 \hline
 Lost EPNs & 1 EPN & 2 EPNs & 3 EPNs & 4 EPNs & 5 EPNs & 6 EPNs & 7 EPNs & 8 EPNs & 9 EPNs & 10 EPNs & 11 EPNs \tabularnewline \hline
@@ -60,6 +63,7 @@ Ticktime &&&&&&&&&&& \tabularnewline \hline
 \end{table}
 
 \begin{table}[h!]
+\caption*{\textbf{Experiment two using a cluster on Nikhef}}
 \resizebox{\textwidth}{!}{\begin{tabular}{| p{0.1\linewidth} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} |}
 \hline
 Lost EPNs & 1 EPN & 2 EPNs & 3 EPNs & 4 EPNs & 5 EPNs & 6 EPNs & 7 EPNs & 8 EPNs & 9 EPNs & 10 EPNs & 11 EPNs \tabularnewline \hline
@@ -91,6 +95,7 @@ Ticktime &&&&&&&&&&& \tabularnewline \hline
 Compliant with the previous results, the TF loss to ticktime ratio rises in a linear line, with no absurdities along the way. The amounts are also negligibly different to the previous results. Results can be seen in table ~\ref{table:Ex3MitchResults} and table ~\ref{table:Ex3HeikoResults}. A histogram for ticktime 5 can be seen at ~\ref{fig:Ex3Histogram}. It shows a standard deviation of 1.569 for all the TFs lost in the entire run. 
 
 \begin{table}[h!]
+\caption*{\textbf{Experiment three using a cluster of Raspberry Pi's}}
 \resizebox{\textwidth}{!}{\begin{tabular}{| p{0.1\linewidth} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} |}
 \hline
 Lost EPNs & 1 EPN & 2 EPNs & 3 EPNs & 4 EPNs & 5 EPNs & 6 EPNs & 7 EPNs & 8 EPNs & 9 EPNs & 10 EPNs & 11 EPNs \tabularnewline \hline
@@ -106,6 +111,7 @@ Ticktime &&&&&&&&&&& \tabularnewline \hline
 \end{table}
 
 \begin{table}[htb]
+\caption*{\textbf{Experiment three using a cluster on Nikhef}}
 \resizebox{\textwidth}{!}{\begin{tabular}{| p{0.1\linewidth} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} |}
 \hline
 Lost EPNs & 1 EPN & 2 EPNs & 3 EPNs & 4 EPNs & 5 EPNs & 6 EPNs & 7 EPNs & 8 EPNs & 9 EPNs & 10 EPNs & 11 EPNs \tabularnewline \hline
@@ -158,12 +164,46 @@ Ticktime &&&&&&&&&&& \tabularnewline \hline
 
 \section{Analysis}
 \subsection{Comparison to the previous experiment}
-Looking at the data from the experiment, the difference is almost negligible. Tables ~\ref{table:DifEx1} , ~\ref{table:DifEx2} and ~\ref{table:DifEx3} show the percentage difference of all the results.
+To calculate the validity of the results, the Pearson correlation will be used. This is calculated using: \\
+
+\begin{equation}
+\rho x,y = \frac{\sum (x-m_{x})(y-m_{y})}{\sqrt{\sum(x-m_{x})^2(y-m_{y})^2}}
+\end{equation}
+
+~\\ Where $m_{x}$ is the mean of vector $x$, and $m_{y}$ is the mean of vector $y$.
+~\\ A way to calculate this in python is shown in listing ~\ref{lst:PearsonInPython} The results of this can be found in table ~\ref{table:PearsonCor}
+
+\begin{lstlisting}[frame=single,language=Python,caption={Pearson correlation calculation in Python},label={lst:PearsonInPython}]
+from scipy.stats.stats import pearsonr
+def list of values X
+def list of values Y
+pearsonr(X,Y)
+\end{lstlisting}
+
+\begin{table}[h!]
+\begin{tabular}{| l | l | l |}
+\hline
+Experiment & Pearson Correlation & Total \\ \hline
+1 & 0.95 & \\ \hline
+2-5 & 0.87 & \\ \hline
+2-10 & 0.87 & \\ \hline
+2-15 & 0.90 & \\ \hline
+2-20 & 0.43 & \\ \hline
+2-25 & 0.45 & \textbf{0.89} \\ \hline
+3-5 & 0.91 & \\ \hline
+3-10 & 0.90 & \\ \hline
+3-15 & 0.28 & \\ \hline
+3-20 & 0.52 & \\ \hline
+3-25 & 0.45 & \textbf{0.61} \\ \hline
+\end{tabular}
+\caption{Pearson correlation between the raspberry pi cluster and the cluster on Nikhef}
+\label{table:PearsonCor}
+\end{table}
 
 \begin{table}[h!]
 \begin{tabular}{| l | l | l | l | l |}
 \hline
-Ticktime & Raspberry & Xeon & \% Difference & Total \\ \hline
+Ticktime & Raspberry & Nikhef & \% Difference & Total \\ \hline
 5 & 2.16 & 1.24 & 74.19 & \\ \hline
 10 & 2.13 & 1.84 & 15.76 & \\ \hline
 15 & 3.08 & 2.16 & 42.59 & \\ \hline
@@ -179,6 +219,7 @@ Ticktime & Raspberry & Xeon & \% Difference & Total \\ \hline
 \end{table} 
 
 \begin{table}[h!]
+\caption*{\textbf{Raspberry Pi - Nikhef cluster}}
 \resizebox{\textwidth}{!}{\begin{tabular}{| p{0.1\linewidth} | >{\centering}m{0.8cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.8cm} |}
 \hline
 Lost EPNs & 1 EPN & 2 EPNs & 3 EPNs & 4 EPNs & 5 EPNs & 6 EPNs & 7 EPNs & 8 EPNs & 9 EPNs & 10 EPNs & 11 EPNs & \textbf{Total} \tabularnewline \hline
@@ -196,6 +237,7 @@ Ticktime &&&&&&&&&&&& \tabularnewline \hline
 \end{table}
 
 \begin{table}[h!]
+\caption*{\textbf{Raspberry Pi - Nikhef cluster}}
 \resizebox{\textwidth}{!}{\begin{tabular}{| p{0.1\linewidth} | >{\centering}m{0.8cm} | >{\centering}m{0.8cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.8cm} |}
 \hline
 Lost EPNs & 1 EPN & 2 EPNs & 3 EPNs & 4 EPNs & 5 EPNs & 6 EPNs & 7 EPNs & 8 EPNs & 9 EPNs & 10 EPNs & 11 EPNs & \textbf{Total} \tabularnewline \hline
