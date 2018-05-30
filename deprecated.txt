@@ -52,3 +52,15 @@ Ticktime &&&&&&&&&&&& \tabularnewline \hline
 \label{table:DifEx3}
 \end{table}
 
+
+2-5 & 0.89 & \\ \hline
+2-10 & 0.89 & \\ \hline
+2-15 & 0.91 & \\ \hline
+2-20 & 0.48 & \\ \hline
+2-25 & 0.43 & \textbf{0.71} \\ \hline
+3-5 & 0.91 & \\ \hline
+3-10 & 0.90 & \\ \hline
+3-15 & 0.28 & \\ \hline
+3-20 & 0.52 & \\ \hline
+3-25 & 0.45 & \textbf{0.62} \\ \hline
+
