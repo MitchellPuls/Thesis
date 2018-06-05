@@ -159,9 +159,25 @@ Ticktime & Mean TF loss & Standard Deviation \\ \hline
 \end{table}
 
 
-%\section{Ex.2 3 FLPs 18 EPNs}
-%\textbf{Ticktime influence on the Blacklist algorithm with all but one fail-over.}
-%\\~\\
+\section{Ex.2 3 FLPs 18 EPNs}
+\textbf{Ticktime influence on the Blacklist algorithm with all but one fail-over.}
+\\~\\
+
+\begin{table}[h!]
+\caption*{\textbf{Experiment two (2/12) using a cluster of Raspberry Pi's}}
+\resizebox{\textwidth}{!}{\begin{tabular}{| p{0.1\linewidth} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} | >{\centering}m{0.7cm} |}
+\hline
+Lost EPNs & 1 EPN & 2 EPNs & 3 EPNs & 4 EPNs & 5 EPNs & 6 EPNs & 7 EPNs & 8 EPNs & 9 EPNs & 10 EPNs & 11 EPNs \tabularnewline \hline
+Ticktime &&&&&&&&&&& \tabularnewline \hline
+5 & 2 & 1.96 & 2.04 & 2.04 & 2 & 2 & 1.96 & 1.96 & 1.92 & 1.96 & 2 & \textbf{11.83}\tabularnewline \hline
+10 & 2 & 2.36 & 2.6 & 3.2 & 3.08 & 3.04 & 3.08 & 3.72 & 4.04 & 5.08 & 6.68 & \textbf{28.88} \tabularnewline \hline
+15 & 2.96 & 2.96 & 2.96 & 3 & 3.58 & 3.58 & 3.96 & 4.38 & 5.25 & 6.38 & 8.54 & \textbf{37.54}\tabularnewline \hline
+20 & 2.96 & 3.13 & 3.25 & 3.75 & 4 & 4.29 & 4.67 & 5.46 & 6.29 & 8.04 & 10.38 & \textbf{46.67}\tabularnewline \hline
+25 & 3.36 & 3.64 & 3.92 & 4 & 4.56 & 4.96 & 5.44 & 6.32 & 7.4 & 9 & 12.68 & \textbf{55.28}\tabularnewline \hline
+\end{tabular}}
+\caption{Cumulative lost TFs by ticktime/EPN ratio with a flat sample size for the Blacklist algorithm}
+\label{table:Ex2MitchResults}
+\end{table}
 
 %\section{Ex.3 3 FLPs 18 EPNs}
 %\textbf{Ticktime influence on the Blacklist algorithm with all but one-fail over with random sample size.}

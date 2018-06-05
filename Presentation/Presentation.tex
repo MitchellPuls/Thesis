@@ -1,4 +1,6 @@
 \documentclass{beamer}
+\usepackage{tikz}
+\usepackage{rotating}
 
 \title{Load Balancing for ALICE}
 \subtitle{Software for Science, CERN}
@@ -27,6 +29,7 @@
 	\frame {
 		\frametitle{Index}
 		\begin{itemize}
+			\item ALICE
 			\item Load Balancing
 			\item Cluster
 			\item Experiments
@@ -37,6 +40,26 @@
 			\item Experiment 4
 			\end{itemize}
 		\end{itemize}
+	}
+	\frame {
+		\frametitle{ALICE}
+		\begin{columns}[T]
+		
+		\begin{column}{0.5\textwidth}
+		~\\~\\~\\~\\~\\
+		\begin{itemize}
+			\item CERN
+			\item LHC
+			\item ALICE
+		\end{itemize}
+		\end{column}
+		
+		\begin{column}{0.5\textwidth}
+		\includegraphics[scale=0.3]{./graphics/alice.png}
+		\end{column}
+		
+		\end{columns}
+		\footnote{http://alice-collaboration.web.cern.ch/}
 	}
 	\frame{
 		\frametitle{Load Balancing}
@@ -58,23 +81,35 @@
 	    \frametitle{Cluster}
 	    \begin{columns}[T]
 	    \begin{column}{0.5\textwidth}
-		~\\~\\
+		~\\~\\~\\~\\~\\
 		\begin{itemize}
 			\item Raspberry Pi
 		\end{itemize}
 	    \end{column}
 	    \begin{column}{0.5\textwidth}
-%	    \includegraphics[scale=•]{•}
+	    \includegraphics[angle=-90,origin=c,scale=0.04]{./graphics/cluster.JPG}
 	    \end{column}
 	    \end{columns}
 	}
 	\frame{
 		\frametitle{Experiments}
+		\begin{columns}[T]
+		
+		\begin{column}{0.5\textwidth}
+		~\\~\\~\\~\\
 		\begin{itemize}
 			\item Ratio
 			\item Compare
 			\item Expand
 		\end{itemize}
+		\end{column}
+		
+		\begin{column}{0.5\textwidth}
+		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{./graphics/connection_diagram.png}
+		\end{column}
+		
+		\end{columns}
+		\footnote{Block diagram of the cluster connections (van der Heijden, 2018, p. 22)}
 	}
 	\frame{
 		\frametitle{Experiments}
@@ -94,7 +129,7 @@
 		\end{column}
 		
 		\end{columns}
-		\footnote{Effects of the EPNs and FLPs on the Information Node for ALICE, 2018, p. 19}
+		\footnote{Effects of the EPNs and FLPs on the Information Node for ALICE (Puls, 2018, p. 19)}
 	}
 	\frame{
 		\frametitle{Experiments}
@@ -114,7 +149,7 @@
 		\end{column}
 		
 		\end{columns}
-		\footnote{Effects of the EPNs and FLPs on the Information Node for ALICE, 2018, p. 20}
+		\footnote{Effects of the EPNs and FLPs on the Information Node for ALICE (Puls, 2018, p. 20)}
 	}
 	\frame{
 		\frametitle{Experiments}
@@ -134,7 +169,7 @@
 		\end{column}
 		
 		\end{columns}		
-		\footnote{Effects of the EPNs and FLPs on the Information Node for ALICE, 2018, p. 21}
+		\footnote{Effects of the EPNs and FLPs on the Information Node for ALICE (Puls, 2018, p. 21)}
 	}
 	\frame{
 		\frametitle{Experiments}
@@ -154,7 +189,7 @@
 		\end{column}
 		
 		\end{columns}
-		\footnote{Effects of the EPNs and FLPs on the Information Node for ALICE, 2018, p. 22}
+		\footnote{Effects of the EPNs and FLPs on the Information Node for ALICE (Puls, 2018, p. 22)}
 	}
 	\frame{
 		\frametitle{The end}
