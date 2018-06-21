@@ -205,6 +205,24 @@ Ticktime &&&&&&&&&&&& \tabularnewline \hline
 \textbf{Ticktime influence on the Blacklist algorithm with one fail-over.}
 \\~\\
 
+\begin{table}[h!]
+\caption*{\textbf{Experiment one (4/24) using a cluster of Raspberry Pi's}}
+\begin{tabular}{| l | l | l |}
+\hline
+Ticktime & Mean TF loss & Standard Deviation \\ \hline
+5 & 1 & 0 \\ \hline
+10 & 1 & 0 \\ \hline
+15 & 1 & 0 \\ \hline
+20 & 2.76 & 0.44 \\ \hline
+25 & 2.96 & 0.2 \\ \hline
+30 & 2.96 & 0.2 \\ \hline
+35 & 3.12 & 0.45 \\ \hline
+40 & 3.48 & 0.51 \\ \hline
+\end{tabular}
+\caption{Results of the TFs lost with 1 fail over using a cluster of Raspberry Pi's}
+\label{table:Ex1424Results}
+\end{table}
+
 \section{Ex.2 4 FLPs 24 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with all but one fail-over.}
 \\~\\
