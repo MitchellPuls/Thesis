@@ -158,10 +158,12 @@ Ticktime & Mean TF loss & Standard Deviation \\ \hline
 \label{table:Ex1318Results}
 \end{table}
 
+\newpage
 
 \section{Ex.2 3 FLPs 18 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with all but one fail-over.}
 \\~\\
+The results of the experiment are shown in ~\ref{table:Ex2318Results}. It shows a lower TF loss compared to ~\ref{table:Ex2MitchResults}. It also has an average loss of 11 total TF loss for ticktime 5. This is because the time between when the EPN disables, and it has come around again to where it would send data to that EPN again, is big enough for the blacklist to be refreshed.
 
 \begin{table}[h!]
 \caption*{\textbf{Experiment two (3/18) using a cluster of Raspberry Pi's}}
@@ -183,7 +185,7 @@ Ticktime &&&&&&&&&&&& \tabularnewline \hline
 \textbf{Ticktime influence on the Blacklist algorithm with all but one-fail over with random sample size.}
 \\~\\
 
-The results of the experiment are shown in table ~\ref{table:Ex3318Results}. It shows that at a ticktime of 5, the average total lost is just above 11. If the expected TF lost is deducted from that, which is 11 for this experiment, then it would have an average of 0.74 TFs lost. All the other ticktimes show the same linear increase in TFs lost.
+The results of the experiment are shown in table ~\ref{table:Ex3318Results}. It shows the same TF loss of 11 at ticktime 5. The other results show the same linear ascend. All these results are again lower compared to ~\ref{table:Ex3MitchResults}.
 
 \begin{table}[h!]
 \caption*{\textbf{Experiment three (3/18) using a cluster of Raspberry Pi's}}
@@ -200,6 +202,8 @@ Ticktime &&&&&&&&&&&& \tabularnewline \hline
 \caption{Cumulative lost TFs by ticktime/EPN ratio with a random sample size for the Blacklist algorithm}
 \label{table:Ex3318Results}
 \end{table}
+
+\newpage
 
 \section{Ex.1 4 FLPs 24 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with one fail-over.}
@@ -226,6 +230,7 @@ Ticktime & Mean TF loss & Standard Deviation \\ \hline
 \section{Ex.2 4 FLPs 24 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with all but one fail-over.}
 \\~\\
+Table ~\ref{table:Ex1424Results} shows the results of the experiment. It shows a the same linear line going up per EPN as in the previous experiments. These results are yet again smaller than the results from table ~\ref{table:Ex1318Results}.
 
 \begin{table}[h!]
 \caption*{\textbf{Experiment two (4/24) using a cluster of Raspberry Pi's}}
@@ -266,6 +271,7 @@ Ticktime &&&&&&&&&&&& \tabularnewline \hline
 \section{Ex.4 4 FLPs 24 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with a fixed cluster fail-over pattern using a random sample size.}
 \\~\\
+Table ~\ref{table:Ex4424Results} shows the results of the experiment. It shows that for the first 4 clusters the TF loss is low, but for the last cluster it's substantially higher. Because of this, the total average is also a lot higher.
 
 \begin{table}[h!]
 \caption*{\textbf{Experiment four (4/24) using a cluster of Raspberry Pi's}}
@@ -286,6 +292,7 @@ Ticktime &&&&&& \tabularnewline \hline
 \section{Ex.5 4 FLPs 24EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with a random cluster fail-over pattern using a random sample size}
 \\~\\
+Table ~\ref{table:Ex5424Results} shows the result of the experiment. It shows that with a random cluster fail-over pattern, the total average TF loss is close to the results in table ~\ref{table:Ex4424Results}, but for each seperate cluster they are higher. Unlike the previous experiment where it's all lower numbers first and then finally a very large one.
 
 \begin{table}[h!]
 \caption*{\textbf{Experiment five (4/24) using a cluster of Raspberry Pi's}}
