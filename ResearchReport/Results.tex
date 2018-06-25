@@ -138,21 +138,21 @@ Ticktime &&&&&&&&&&& \tabularnewline \hline
 \section{Ex.1 3 FLPs 18 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with one fail-over.}
 \\~\\
-The results of the experiment are shown in table ~\ref{table:Ex1318Results}. It shows a linear line going up starting after 15 milliseconds. It also shows that at the first three ticktimes the mean and standard deviation are round. This is different compared to the results in table ~\ref{table:Ex1MitchResults}.
+The results of the experiment are shown in table ~\ref{table:Ex1318Results}. It shows a linear line going up. At ticktime 10 there is only an average of 1 TF loss. This is the 1 TF that is lost when a shutdown is initialized. These results are lower compared to the results in table ~\ref{table:Ex1MitchResults}.
 
 \begin{table}[h!]
 \caption*{\textbf{Experiment one (3/18) using a cluster of Raspberry Pi's}}
 \begin{tabular}{| l | l | l |}
 \hline
 Ticktime & Mean TF loss & Standard Deviation \\ \hline
-5 & 2 & 0 \\ \hline
-10 & 2 & 0 \\ \hline
-15 & 2 & 0 \\ \hline
-20 & 2.76 & 0.44 \\ \hline
-25 & 2.96 & 0.2 \\ \hline
-30 & 2.96 & 0.2 \\ \hline
-35 & 3.12 & 0.45 \\ \hline
-40 & 3.48 & 0.51 \\ \hline
+5 & 1.13 & 0.34 \\ \hline
+10 & 1 & 0 \\ \hline
+15 & 1.92 & 0.50 \\ \hline
+20 & 2.08 & 0.28 \\ \hline
+25 & 2.08 & 0.28 \\ \hline
+30 & 2.08 & 0.28 \\ \hline
+35 & 2.52 & 0.51 \\ \hline
+40 & 2.84 & 0.37 \\ \hline
 \end{tabular}
 \caption{Results of the TFs lost with 1 fail over using a cluster of Raspberry Pi's}
 \label{table:Ex1318Results}
@@ -163,7 +163,7 @@ Ticktime & Mean TF loss & Standard Deviation \\ \hline
 \section{Ex.2 3 FLPs 18 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with all but one fail-over.}
 \\~\\
-The results of the experiment are shown in ~\ref{table:Ex2318Results}. It shows a lower TF loss compared to ~\ref{table:Ex2MitchResults}. It also has an average loss of 11 total TF loss for ticktime 5. This is because the time between when the EPN disables, and it has come around again to where it would send data to that EPN again, is big enough for the blacklist to be refreshed.
+The results of the experiment are shown in ~\ref{table:Ex2318Results}. It shows a lower TF loss compared to ~\ref{table:Ex2MitchResults}. It shows that at a ticktime of 5, every fail over will have a TF loss of < 2. This 1 TF comes from the shutdown signal. This means that the time between shutdown, and coming back around again to the EPN, is longer than the time needed to refresh the blacklist. 
 
 \begin{table}[h!]
 \caption*{\textbf{Experiment two (3/18) using a cluster of Raspberry Pi's}}
@@ -171,11 +171,11 @@ The results of the experiment are shown in ~\ref{table:Ex2318Results}. It shows 
 \hline
 Lost EPNs & 1 EPN & 2 EPNs & 3 EPNs & 4 EPNs & 5 EPNs & 6 EPNs & 7 EPNs & 8 EPNs & 9 EPNs & 10 EPNs & 11 EPNs & Total \tabularnewline \hline
 Ticktime &&&&&&&&&&&& \tabularnewline \hline
-5 & 2 & 1.96 & 2.04 & 2.04 & 2 & 2 & 1.96 & 1.96 & 1.92 & 1.96 & 2 & \textbf{11.83}\tabularnewline \hline
-10 & 2 & 2.08 & 2 & 1.92 & 2 & 2.04 & 2 & 2.33 & 2.88 & 3.08 & 3 & \textbf{15.33} \tabularnewline \hline
-15 & 2 & 2.04 & 2.25 & 2.38 & 2.67 & 2.79 & 2.96 & 3 & 3.04 & 3 & 3.17 & \textbf{19.29}\tabularnewline \hline
-20 & 2.68 & 2.76 & 2.88 & 2.96 & 2.96 & 2.96 & 3 & 3.04 & 3.36 & 3.64 & 3.84 & \textbf{24.08}\tabularnewline \hline
-25 & 3 & 2.96 & 3 & 2.96 & 3 & 3.16 & 3.4 & 3.44 & 3.88 & 4 & 4.48 & \textbf{27.32}\tabularnewline \hline
+5 & 1.14 & 1.1 & 1.05 & 1.05 & 1.05 & 1.1 & 1.5 & 1 & 1.67 & 1.52 & 1.62 & \textbf{3.33}\tabularnewline \hline
+10 & 1.04 & 1.25 & 1.29 & 1.17 & 1.88 & 2.04 & 2 & 2.08 & 1.96 & 2.08 & 2.04 & \textbf{8.83} \tabularnewline \hline
+15 & 2 & 2.08 & 2.08 & 2.08 & 2.04 & 2 & 2.08 & 2.08 & 2.33 & 2.71 & 2.79 & \textbf{14.29}\tabularnewline \hline
+20 & 2.16 & 2.12 & 2.08 & 2.08 & 2.16 & 2.12 & 2.4 & 2.52 & 2.96 & 3.04 & 3.08 & \textbf{16.72}\tabularnewline \hline
+25 & 2.04 & 2.16 & 2.04 & 2.16 & 2.6 & 2.48 & 2.92 & 3.08 & 3.2 & 3.36 & 3.72 & \textbf{19.76}\tabularnewline \hline
 \end{tabular}}
 \caption{Cumulative lost TFs by ticktime/EPN ratio with a flat sample size for the Blacklist algorithm}
 \label{table:Ex2318Results}
@@ -215,13 +215,13 @@ Ticktime &&&&&&&&&&&& \tabularnewline \hline
 \hline
 Ticktime & Mean TF loss & Standard Deviation \\ \hline
 5 & 1 & 0 \\ \hline
-10 & 1 & 0 \\ \hline
-15 & 1 & 0 \\ \hline
-20 & 2.76 & 0.44 \\ \hline
-25 & 2.96 & 0.2 \\ \hline
-30 & 2.96 & 0.2 \\ \hline
-35 & 3.12 & 0.45 \\ \hline
-40 & 3.48 & 0.51 \\ \hline
+10 & 1.08 & 0.28 \\ \hline
+15 & 1.76 & 0.53 \\ \hline
+20 & 2.12 & 0.44 \\ \hline
+25 & 2 & 0 \\ \hline
+30 & 2 & 0 \\ \hline
+35 & 2.16 & 0.37 \\ \hline
+40 & 2.33 & 0.48 \\ \hline
 \end{tabular}
 \caption{Results of the TFs lost with 1 fail over using a cluster of Raspberry Pi's}
 \label{table:Ex1424Results}
@@ -339,14 +339,79 @@ Experiment & Pearson Correlation \\ \hline
 \label{table:PearsonCor}
 \end{table}
 
-~\\ These correlations all strongly deny the null hypothesis, and thus there is some sort of statistical relationship. 
+~\\ These correlations all strongly deny the null hypothesis, and thus there is some sort of statistical relationship. They also are close to 1, which means they are close to having a total positive linear correlation. Thus concluded that there is indeed a correlation between the setup on Nikhef, and the setup using Raspberry Pi's.
 
 \subsection{Increasing the numbers of FLPs and EPNs}
 
-When comparing the data between the experiments, we look at three different things.
+When comparing the data between the experiments, the t-test method is used. A way to implement a t-test analysis in Python is shown in listing ~\ref{lst:t-testinInPython}. For every increase in units the t-test will be performed.
+
+\begin{lstlisting}[frame=single,language=Python,caption={t-test analysis in Python},label={lst:t-testinInPython}]
+from scipy.stats import ttest_ind
+def list of values X
+def list of values Y
+print ttest_ind(X, Y, equal_var=False)
+\end{lstlisting}
 
 \subsubsection*{Correlation between 2/12 and 3/18}
-\subsubsection*{Correlation between 3/18 and 4/24}
-\subsubsection*{Correlation between 2/12 and 4/24}
+Table ~\ref{table:Ttest23} shows that 
 
-\subsection{Having an entire cluster fail-over}
+\begin{table}[h!]
+\begin{tabular}{| l | l | l |}
+\hline
+Experiment & t-statistic & p-value \\ \hline
+1 & 3.53 & 0.004 \\ \hline
+2 & 3.53 & 0.014 \\ \hline
+3 &  &  \\ \hline
+\end{tabular}
+\caption{t-test results of the experiments 2/12 and 3/18}
+\label{table:Ttest23}
+\end{table}
+
+\subsubsection*{Correlation between 3/18 and 4/24}
+Table ~\ref{table:Ttest34} shows that 
+
+\begin{table}[h!]
+\begin{tabular}{| l | l | l |}
+\hline
+Experiment & t-statistic & p-value \\ \hline
+1 & 0.53 & 0.605 \\ \hline
+2 & 0.78 & 0.458 \\ \hline
+3 &  &  \\ \hline
+\end{tabular}
+\caption{t-test results of the experiments 3/18 and 4/24}
+\label{table:Ttest34}
+\end{table}
+
+\subsubsection*{Correlation between 2/12 and 4/24}
+Table ~\ref{table:Ttest24} shows that 
+
+\begin{table}[h!]
+\begin{tabular}{| l | l | l |}
+\hline
+Experiment & t-statistic & p-value \\ \hline
+1 & 4.15 & 0.002 \\ \hline
+2 & 4.09 & 0.010 \\ \hline
+3 & 4.02 & 0.010 \\ \hline
+\end{tabular}
+\caption{t-test results of the experiments 2/12 and 4/24}
+\label{table:Ttest24}
+\end{table}
+
+
+\subsection{Comparing cluster fail-over patterns}
+For comparing the two experiments the same t-test will be used. The results are shown in ~\ref{table:Ttest45}. It shows that the t-statistic is -0.75 and the p-value is 0.474. This means that there is no significant statistical difference. Looking at the results it shows that that experiment four has lower values for the first four cluster fail-overs, but then has a higher value for the last cluster fail-over, whereas experiment five has higher values overall for each cluster fail-over. This shows that there is a difference in the lost TFs per individual cluster that has a fail-over depending on the layout, but that in the end the total amount is still similar.
+
+\begin{table}[h!]
+\begin{tabular}{| l | l | l | l | l |}
+\hline
+Ticktime & Experiment 4 & Experiment 5 & t-statistic & p-value \\ \hline
+5 & 261.29 & 315.47 &  &  \\ \hline
+10 & 299.88 & 283.24 &  &  \\ \hline
+15 & 295.36 & 277.92 &  &  \\ \hline
+20 & 323.65 & 299.24 &  &  \\ \hline
+25 & 284.23 & 350.83 &  &  \\ \hline \hline
+Total &  &  & \textbf{-0.75} & \textbf{0.474}\\ \hline
+\end{tabular}
+\caption{t-test results of experiment four and five}
+\label{table:Ttest45}
+\end{table}
