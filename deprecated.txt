@@ -64,3 +64,59 @@ Ticktime &&&&&&&&&&&& \tabularnewline \hline
 3-20 & 0.52 & \\ \hline
 3-25 & 0.45 & \textbf{0.62} \\ \hline
 
+
+
+\subsubsection*{Differences between 2/12 and 4/24}
+Table ~\ref{table:Ttest24} shows that 
+
+\begin{table}[!htbp]
+\begin{tabular}{| l | l | l | l | l |}
+\hline
+Experiment 1 & 2/12 & 4/24 & Nominal difference & \% difference \\ \hline
+Ticktime &&&& \\ \hline
+5 & 2.16 & 1 & 1.16 & -53.7 \\ \hline
+10 & 2.13 & 1.08 & 1.05 & -49.3 \\ \hline
+15 & 3.08 & 1.76 & 1.32 & -42.86 \\ \hline
+20 & 3 & 2.12 & 0.88 & -29.33 \\ \hline
+25 & 3.52 & 2 & 1.52 & -43.18 \\ \hline
+30 & 4.32 & 2 & 2.32 & -53.7 \\ \hline
+35 & 4.13 & 2.16 & 1.97 & -47.7 \\ \hline
+40 & 4.56 & 2.33 & 2.23 & -48.9 \\ \hline \hline
+Average &&& \textbf{1.56} & \textbf{-46.28} \\ \hline
+\end{tabular}
+\caption{Differences for experiment one using 2/12 and 4/24 ratio's}
+\label{table:Diff24ex1}
+\end{table}
+
+\begin{table}[!htbp]
+\begin{tabular}{| l | l | l | l | l |}
+\hline
+Experiment 2 & 2/12 & 4/24 & Nominal difference & \% difference \\ \hline
+Ticktime &&&& \\ \hline
+5 & 18.92 & 2.65 & 16.27 & -85.99 \\ \hline
+10 & 28.88 & 6.8 & 22.08 & -76.45 \\ \hline
+15 & 37.54 & 11.12 & 26.42 & -70.38 \\ \hline
+20 & 46.67 & 13.12 & 33.55 & -71.89 \\ \hline
+25 & 55.28 & 14.88 & 40.4 & -73.08 \\ \hline \hline
+Average &&& \textbf{27.74} & \textbf{-74.07} \\ \hline
+\end{tabular}
+\caption{Differences for experiment two using 2/12 and 4/24 ratio's}
+\label{table:Diff24ex2}
+\end{table}
+
+\begin{table}[!htbp]
+\begin{tabular}{| l | l | l | l | l |}
+\hline
+Experiment 3 & 2/12 & 4/24 & Nominal difference & \% difference \\ \hline
+Ticktime &&&& \\ \hline
+5 & 23.88 & 8.1 & 15.78 & -66.08 \\ \hline
+10 & 26.52 & 9.12 & 17.4 & -65.61 \\ \hline
+15 & 37.08 & 12.4 & 24.68 & -66.56 \\ \hline
+20 & 45.12 & 16.04 & 29.08 & -64.45 \\ \hline
+25 & 55.13 & 18.58 & 36.55 & -66.3 \\ \hline \hline
+Average &&& \textbf{24.7} & \textbf{-65.78} \\ \hline
+\end{tabular}
+\caption{Differences for experiment three using 2/12 and 2/24 ratio's}
+\label{table:Diff24ex3}
+\end{table}
+
