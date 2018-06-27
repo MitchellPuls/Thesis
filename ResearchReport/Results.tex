@@ -34,7 +34,7 @@ Ticktime & Mean TF loss & Standard Deviation \\ \hline
 20 & 2.12 & 0.325 \\ \hline
 25 & 2.708 & 0.4545 \\ \hline
 30 & 3 & 0 \\ \hline
-35 & 3.52 & 4.996 \\ \hline
+35 & 3.52 & 0.4996 \\ \hline
 40 & 3.76 & 0.4271 \\ \hline
 \end{tabular}
 \caption{Results of the TFs lost with 1 fail over using a cluster of Intel Xeons (van der Heijden, 2018, p. 36)}
@@ -44,7 +44,7 @@ Ticktime & Mean TF loss & Standard Deviation \\ \hline
 \section{Ex.2 2 FLPs 12 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with all but one fail-over.}
 \\~\\
-Table ~\ref{table:Ex2MitchResults} shows the lost TFs per ticktime/EPN ratio. For every extra EPN that is lost, the lost TFs increase in a linear motion. This is compliant with the previous experiment. These results are shown in table ~\ref{table:Ex2HeikoResults}. A histogram of ticktime 5 shown at ~\ref{Ex2Histogram} shows that the standard deviation is 0.9568.
+Table ~\ref{table:Ex2MitchResults} shows the lost TFs per ticktime/EPN ratio. For every extra EPN that is lost, the lost TFs increase in a linear motion. This is the same linear motion visible in the previous experiment. These results are shown in table ~\ref{table:Ex2HeikoResults}. A histogram of ticktime 5 shown at ~\ref{Ex2Histogram} shows that the standard deviation is 0.9568.
 
 \begin{table}[h!]
 \caption*{\textbf{Experiment two (2/12) using a cluster of Raspberry Pi's}}
@@ -92,7 +92,7 @@ Ticktime &&&&&&&&&&& \tabularnewline \hline
 \section{Ex.3 2 FLPs 12 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with all but one-fail over with random sample size.}
 \\~\\
-Compliant with the previous results, the TF loss to ticktime ratio rises in a linear line, with no absurdities along the way. The amounts are also negligibly different to the previous results. Results can be seen in table ~\ref{table:Ex3MitchResults} and table ~\ref{table:Ex3HeikoResults}. A histogram for ticktime 5 can be seen at ~\ref{fig:Ex3Histogram}. It shows a standard deviation of 1.569 for all the TFs lost in the entire run. 
+Similar to the previous results, the TF loss to ticktime ratio rises in a linear line. Results can be seen in table ~\ref{table:Ex3MitchResults} and table ~\ref{table:Ex3HeikoResults}. A histogram for ticktime 5 can be seen at ~\ref{fig:Ex3Histogram}. It shows a standard deviation of 1.569 for all the TFs lost in the entire run. 
 
 \begin{table}[h!]
 \caption*{\textbf{Experiment three (2/12) using a cluster of Raspberry Pi's}}
@@ -318,7 +318,7 @@ To calculate the validity of the results, the Pearson correlation will be used. 
 \end{flalign*}
 
 ~\\ Where $m_{x}$ is the mean of vector $x$, and $m_{y}$ is the mean of vector $y$.
-~\\ A way to calculate this in python is shown in listing ~\ref{lst:PearsonInPython} The results of this can be found in table ~\ref{table:PearsonCor}. The totals of all separate tests are combined to calculate this correlation. If the Pearson correlation is close to 1, it means that there is a strong positve linear correlation. If it's 0 then there is no linear correlation. If it's -1 then there is a strong negative linear correlation.
+~\\ A way to calculate this in python is shown in listing ~\ref{lst:PearsonInPython} The results of this can be found in table ~\ref{table:PearsonCor}. The totals of all separate tests are combined to calculate this correlation. If the Pearson correlation is close to 1, it means that there is a strong positve linear correlation. If it's 0 then there is no linear correlation. If it's -1 then there is a strong negative linear correlation. In order to deny the null hypothesis, as in there is no correlation between the two experiments, with a 0.1\% error margin, the correlation value for experiment 1 would have to be $>$= 0.742, for experiment 2 $>$=0.872 and for experiment $>$=0.872\footnote{https://www.radford.edu/jaspelme/statsbook/Chapter\%20files/Table of Critical Values for r.pdf} 
 
 \begin{lstlisting}[frame=single,language=Python,caption={Pearson correlation calculation in Python},label={lst:PearsonInPython}]
 from scipy.stats.stats import pearsonr
