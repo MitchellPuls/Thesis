@@ -33,7 +33,7 @@ Operating System & Raspbian Stretch (Debian 9)\\ \hline
 ~\\ The network configuration consists of a bidirectional connection. This is used to reduce the bottleneck over one interface. Load Balancing is done over the first interface, and monitoring is done over the second interface. Figure ~\ref{fig:NetworkSetup} shows a network overview:
 \begin{figure}[htb]
     \centering
-    \includegraphics[scale=0.5]{./graphics/Network_thesis.pdf}
+    \includegraphics[scale=0.5]{./graphics/Network_thesis.png}
     \caption{Network setup}
     \label{fig:NetworkSetup}
 \end{figure}
@@ -53,7 +53,7 @@ Juniper EX3400 & 1/10GbE \\
 \end{table}
 
 \subsection{Complications}
-The second interface is obtained using a LogiLink UA0025C USB2.0 to Ethernet adapter. This adapter has a speed of 10MbE/100MbE and is primarily used by zookeeper to register which Pi is still running. During the build of the prototype there was also an option of using an ENC28J60 Ethernet board instead. This would be plugged onto the GPIO pins on the Raspberry Pi. This board is a lot slower than the LogiLink though, clocking in at around 380 KB/s. 
+The second interface is obtained using a LogiLink UA0025C USB2.0 to Ethernet adapter. This adapter has a speed of 10MbE/100MbE and is primarily used by Zookeeper to register which Pi is still running. During the build of the prototype there was also an option of using an ENC28J60 Ethernet board instead. This would be plugged onto the GPIO pins on the Raspberry Pi. This board is a lot slower than the LogiLink though, clocking in at around 380 KB/s. 
 
 \begin{figure}[htb]
 	\includegraphics[width=\textwidth]{./graphics/gpio_ethernet_speed.jpg}
@@ -111,7 +111,7 @@ Ansible & 2.2.1 \\ \hline
 \newpage
 
 \section{Experiments}
-In order to check whether or not the Information Node has any issues with increased numbers of FLPs and EPNs, the same experiments need to be done as described in the previous report (van der Heijden, 2018, p23-p27) but will be briefly summarized again. The experiments are done in two steps. At first the experiments need to be run using the same amount of FLPs and EPNs to verify whether or not the new setup of Pi clusters are able to give the same result. After that the experiments need to be run again using more FLPs and EPNs to check if it indeed does have an effect on the Information Node.
+In order to check whether or not the Information Node has any issues with increased numbers of FLPs and EPNs, the same experiments need to be done as described in the previous report (van der Heijden, 2018, p23-p27) but will be briefly summarized again. The experiments are done in two steps. At first the experiments need to be run using the same amount of FLPs and EPNs to verify whether or not the new setup of Pi clusters are able to give the same result. After that the experiments need to be run again using more FLPs and EPNs to check if it indeed does have an effect on the Information Node. Lastly two additional experiments will be conducted to check whether or not the layout of the system architecture is of influence to the TF loss.
 
 \subsection{Experiment one}
 \textbf{Ticktime influence on the Blacklist algorithm with one fail-over.}
