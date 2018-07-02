@@ -3,7 +3,7 @@ This chapter will go more in depth about the several different kinds of hardware
 $O^2$ Balancer is a framework used by CERN for simulation experiments for ALICE. The code is open source and licensed under the GNU General Public License V3.0. (GNU General Public License v3.0, 2007)
 
 \subsection{Devices}
-The $O^2$ Balancer consist of a cluster of 1750 computers, divided in 250 First Level Processors (FLPs) and 1500 Event  Nodes (EPNs) These computers are meant to process the data stream coming from ALICE. All of these computers are monitored using an Information Node.
+The $O^2$ Balancer consist of a cluster of 1750 computers, divided in 250 First Level Processors (FLPs) and 1500 Event  Nodes (EPNs) These computers are meant to process the data stream coming from ALICE. All of these computers are monitored using an Information Node. ("Technical Design Report for the Upgrade of the Online Offline Computing System", 2015, p 33-35)
 
 \subsubsection*{First Level Processors}
 The FLPs are the first computers in the line. They receive the data stream (approximately 1.1TB/s) from ALICE and need to distribute that to the next line of computer. In order to do that it takes the data received between two heartbeats, and compresses that into something that's called a Sub Timeframe (STF). A heartbeat lasts for about 20ms. It will then send this STF to the next line of computers which are the EPNs. Every EPN needs to get the same amount of STFs at the same time for recreation purposes. These STFs can then be further examined from there.("Technical Design Report for the Upgrade of the Online Offline Computing System", 2015, p. 33)
@@ -27,7 +27,7 @@ During this report, the FairMQ repository was split off from FairRoot. In the fi
 \footnote{https://github.com/FairRootGroup/FairRoot/issues/736} was done on the FairRoot github which resulted in the official FairMQ repository.
 
 \section{Zookeeper}
-Zookeeper is a program made by Apache to regulate the whole load balancing process. It is run on the Information Node and from there pings to all EPNs to check whether they are online or not. It then creates a list of online EPNs which it gives to the FLPs so that they know to what EPN to send data to. The frequency of these pings are called the Ticktime. 
+Zookeeper is a program made by Apache (Apache Zookeeper, 2017) to regulate the whole load balancing process. It is run on the Information Node and from there pings to all EPNs to check whether they are online or not. It then creates a list of online EPNs which it gives to the FLPs so that they know to what EPN to send data to. The frequency of these pings are called the Ticktime. 
 
 \section{Fail-over}
 When an EPN goes offline it is called a fail-over. When this happens, Zookeeper will know that it is offline and will notify the FLPs to not send any data to this specific EPN anymore. 
