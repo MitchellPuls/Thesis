@@ -1,4 +1,5 @@
-\section{Ex.1 2 FLPs 12 EPNs}
+\section{Results}
+\subsection*{Ex.1 2 FLPs 12 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with one fail-over.}
 \\~\\
 The results of the experiment are shown in table ~\ref{table:Ex1MitchResults}. It shows that there is a linear line going up with the amount of TFs lost compared to ticktime. It also shows that the mean and standard deviation at ticktime 20 are round. This would be because of the ticktime being in sync with the heartbeat rate.
@@ -21,7 +22,7 @@ Ticktime & Mean TF loss & Standard Deviation \\ \hline
 \label{table:Ex1MitchResults}
 \end{table}
 
-~\\ If we compare this to the previous experiment shown in table ~\ref{table:Ex1HeikoResults}, we can see that there is a small difference in the mean of the TFs lost, and some small variations in the standard deviation.
+~\\ If we compare this to the previous experiment shown in table ~\ref{table:Ex1HeikoResults}, we can see that there is a small differences in the mean of the TFs lost ($<$1), and some small variations in the standard deviation.
 
 \begin{table}[h!]
 \caption*{\textbf{Experiment one (2/12) using a cluster on Nikhef}}
@@ -41,7 +42,7 @@ Ticktime & Mean TF loss & Standard Deviation \\ \hline
 \label{table:Ex1HeikoResults}
 \end{table}
 
-\section{Ex.2 2 FLPs 12 EPNs}
+\subsection*{Ex.2 2 FLPs 12 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with all but one fail-over.}
 \\~\\
 Table ~\ref{table:Ex2MitchResults} shows the lost TFs per ticktime/EPN ratio. For every extra EPN that is lost, the lost TFs increase in a linear motion. This is the same linear motion visible in the previous experiment. These results are shown in table ~\ref{table:Ex2HeikoResults}. A histogram of ticktime 5 shown at ~\ref{Ex2Histogram} shows that the standard deviation is 0.9568.
@@ -89,7 +90,7 @@ Ticktime &&&&&&&&&&& \tabularnewline \hline
 
 \newpage
 
-\section{Ex.3 2 FLPs 12 EPNs}
+\subsection*{Ex.3 2 FLPs 12 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with all but one-fail over with random sample size.}
 \\~\\
 Similar to the previous results, the TF loss to ticktime ratio rises in a linear line. Results can be seen in table ~\ref{table:Ex3MitchResults} and table ~\ref{table:Ex3HeikoResults}. A histogram for ticktime 5 can be seen at ~\ref{fig:Ex3Histogram}. It shows a standard deviation of 1.569 for all the TFs lost in the entire run. 
@@ -135,7 +136,7 @@ Ticktime &&&&&&&&&&& \tabularnewline \hline
 
 \newpage
 
-\section{Ex.1 3 FLPs 18 EPNs}
+\subsection*{Ex.1 3 FLPs 18 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with one fail-over.}
 \\~\\
 The results of the experiment are shown in table ~\ref{table:Ex1318Results}. It shows a linear line going up. At ticktime 10 there is only an average of 1 TF loss. This is the 1 TF that is lost when a shutdown is initialized. These results are lower compared to the results in table ~\ref{table:Ex1MitchResults}.
@@ -160,7 +161,7 @@ Ticktime & Mean TF loss & Standard Deviation \\ \hline
 
 \newpage
 
-\section{Ex.2 3 FLPs 18 EPNs}
+\subsection*{Ex.2 3 FLPs 18 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with all but one fail-over.}
 \\~\\
 The results of the experiment are shown in ~\ref{table:Ex2318Results}. It shows a lower TF loss compared to ~\ref{table:Ex2MitchResults}. It shows that at a ticktime of 5, every fail over will have a TF loss of $<$ 2. This 1 TF comes from the shutdown signal. This means that the time between shutdown, and coming back around again to the EPN, is longer than the time needed to refresh the blacklist. 
@@ -181,7 +182,7 @@ Ticktime &&&&&&&&&&&& \tabularnewline \hline
 \label{table:Ex2318Results}
 \end{table}
 
-\section{Ex.3 3 FLPs 18 EPNs}
+\subsection*{Ex.3 3 FLPs 18 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with all but one-fail over with random sample size.}
 \\~\\
 
@@ -205,7 +206,7 @@ Ticktime &&&&&&&&&&&& \tabularnewline \hline
 
 \newpage
 
-\section{Ex.1 4 FLPs 24 EPNs}
+\subsection*{Ex.1 4 FLPs 24 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with one fail-over.}
 \\~\\
 
@@ -227,7 +228,7 @@ Ticktime & Mean TF loss & Standard Deviation \\ \hline
 \label{table:Ex1424Results}
 \end{table}
 
-\section{Ex.2 4 FLPs 24 EPNs}
+\subsection*{Ex.2 4 FLPs 24 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with all but one fail-over.}
 \\~\\
 Table ~\ref{table:Ex1424Results} shows the results of the experiment. It shows a the same linear line going up per EPN as in the previous experiments. These results are yet again smaller than the results from table ~\ref{table:Ex1318Results}.
@@ -248,7 +249,7 @@ Ticktime &&&&&&&&&&&& \tabularnewline \hline
 \label{table:Ex2424Results}
 \end{table}
 
-\section{Ex.3 4 FLPs 24 EPNs}
+\subsection*{Ex.3 4 FLPs 24 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with all but one fail-over with random sample size.}
 \\~\\
 
@@ -268,7 +269,7 @@ Ticktime &&&&&&&&&&&& \tabularnewline \hline
 \label{table:Ex3424Results}
 \end{table}
 
-\section{Ex.4 4 FLPs 24 EPNs}
+\subsection*{Ex.4 4 FLPs 24 EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with a fixed cluster fail-over pattern using a random sample size.}
 \\~\\
 Table ~\ref{table:Ex4424Results} shows the results of the experiment. It shows that for the first four clusters the TF loss is low, but for the last cluster it's substantially higher. Because of this, the total average is also a lot higher.
@@ -289,7 +290,7 @@ Ticktime &&&&&& \tabularnewline \hline
 \label{table:Ex4424Results}
 \end{table}
 
-\section{Ex.5 4 FLPs 24EPNs}
+\subsection*{Ex.5 4 FLPs 24EPNs}
 \textbf{Ticktime influence on the Blacklist algorithm with a random cluster fail-over pattern using a random sample size}
 \\~\\
 Table ~\ref{table:Ex5424Results} shows the result of the experiment. It shows that with a random cluster fail-over pattern, the total average TF loss is close to the results in table ~\ref{table:Ex4424Results}, but for each seperate cluster they are higher. Unlike the previous experiment where it's all lower numbers first and then finally a very large one.
@@ -312,7 +313,58 @@ Ticktime &&&&&& \tabularnewline \hline
 
 \section{Analysis}
 \subsection{Comparison to the previous experiment}
-To calculate the validity of the results, the Pearson correlation will be used. This is calculated using:\\
+To calculate the validity of the results, two methods will be used. An analysis of the trend line will be done, and the Pearson correlation will be used. To calculate the trend line, the following equations are used:
+
+Slope = 
+\begin{flalign*}
+\hspace*{-5cm}\alpha = \frac{n\sum(xy)-\sum(x)\sum(y)}{n\sum(x^2)-(\sum(x))^2}
+\end{flalign*}
+~\\ Intercept =
+\begin{flalign*}
+\hspace*{-5cm}\beta = \frac{\sum(y)-\alpha\sum(x)}{n}
+\end{flalign*}
+~\\ Trend line =
+\begin{flalign*}
+\hspace*{-5cm}y = \alpha x + \beta
+\end{flalign*}
+
+~\\ Figure ~\ref{fig:Ex1Combined}, ~\ref{fig:Ex2Combined} and ~\ref{fig:Ex3Combined} show graphs of both data sets combined. Table ~\ref{table:SlopeInt} shows every experiments slope and intercept, and also the ticktime where the first TF loss would be $>$ 1, and how much the ticktime would have to increase after that to be $+$ 1 TF again.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{./graphics/ex1_combined.png}
+	\caption{Combined results Experiment 1}
+	\label{fig:Ex1Combined}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{./graphics/ex1_combined.png}
+	\caption{Combined results Experiment 2}
+	\label{fig:Ex2Combined}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{./graphics/ex1_combined.png}
+	\caption{Combined results Experiment 3}
+	\label{fig:Ex3Combined}
+\end{figure}
+
+\begin{table}
+\resizebox{\textwidth}{!}{\begin{tabular}{| >{\centering}m{2cm} | >{\centering}m{2cm} | >{\centering}m{2cm} | >{\centering}m{2cm} | >{\centering}m{2cm} | >{\centering}m{2cm} | >{\centering}m{2cm} |}
+\hline
+& Slope Pi & Intercept Pi & Slope Nikhef & Intercept Nikhef & First $>$ 1 & Next $+$ 1 \tabularnewline \hline
+Experiment 1 & 0.074 & 1.7 & 0.069 & 0.982 & 63 & 222 \tabularnewline \hline
+Experiment 2 &  &  &  &  &  &  \tabularnewline \hline
+Experiment 3 &  &  &  &  &  &  \tabularnewline 
+\hline
+\end{tabular}}
+\caption{Slope and Intercepts combined experiments}
+\label{table:SlopeInt}
+\end{table}
+
+~\\ These figures show that the slopes of the data are only ... away from each other. The intercepts are ... away from each other. This shows that there is a close resemblance to each other.
+The Pearson correlation is calculated as followed:
+
 \begin{flalign*}
 \hspace*{-5cm} \rho x,y = \frac{\sum (x-m_{x})(y-m_{y})}{\sqrt{\sum(x-m_{x})^2(y-m_{y})^2}}
 \end{flalign*}
