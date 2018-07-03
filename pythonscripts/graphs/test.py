@@ -50,14 +50,14 @@ def getYInt(slope,x,y):
 
 x,y1,y2 = array('d'), array('d'), array('d')
 
-x.extend((5,10,15,20,25))
-y1.extend((18.92,28.88,37.54,46.67,55.28))
-y2.extend(())
+x.extend((10,15,20,25))
+y1.extend((26.52,37.08,45.12,55.13))
+y2.extend((26.96,35.6,44.76,53.71))
 n = len(x)
 
 graph1 = TGraph(n,x,y1)
 graph1.SetLineColor(4)
-graph1.SetTitle("Experiment 1")
+graph1.SetTitle("Experiment 2")
 graph1.GetYaxis().SetTitle("Timeframes Lost")
 graph1.GetXaxis().SetTitle("Ticktime")
 graph1.GetHistogram().SetMaximum(y1[n-1]+0.5)
@@ -93,14 +93,16 @@ legend.AddEntry(graph1,"Raspberry Pi results","lep")
 legend.AddEntry(graph2,"Nikhef results","lep") 
 legend.Draw()
 
+tempdiff = (slope2+intercept2) - (slope1+intercept1)
+
 x = 0
-while((slope1*x+intercept1)-(slope2*x+intercept2)<= 1):
+while((slope2*x+intercept2)-(slope1*x+intercept1)<= 1):
     x += 1
 print x 
-while((slope1*x+intercept1)-(slope2*x+intercept2)<= 2):
+while((slope2*x+intercept2)-(slope1*x+intercept1)<= 2):
     x += 1
 print x
-while((slope1*x+intercept1)-(slope2*x+intercept2)<= 3):
+while((slope2*x+intercept2)-(slope1*x+intercept1)<= 3):
     x += 1
 print x
 

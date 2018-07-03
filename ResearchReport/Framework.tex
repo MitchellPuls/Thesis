@@ -21,10 +21,10 @@ There is one final computer which is the Information Node (IN). This computer ke
 \end{figure}
 
 \section{FairMQ}
-The transport layer used for the $O^2$ Balancer is FairMQ. This is a transport layer from the larger framework FairRoot \footnote{https://github.com/FairRootGroup/FairRoot} created by GSI Darmstadt. In order to accommodate the smaller processing size of the Raspberry Pi, a trimmed down version of FairRoot is used which is just FairMQ. This is a data transport layer used to send data in between the IN, FLPs and EPNs. 
+The transport layer used for the $O^2$ Balancer is FairMQ. This is a transport layer from the larger framework FairRoot (FairRootGroup/FairRoot, 2018) created by GSI Darmstadt. In order to accommodate the smaller processing size of the Raspberry Pi, a trimmed down version of FairRoot is used which is just FairMQ. This is a data transport layer used to send data in between the IN, FLPs and EPNs. 
 \subsection{Splitting off FairMQ}
 During this report, the FairMQ repository was split off from FairRoot. In the first stages of the prototype an emergency version was used made by Heiko van der Heijden. Meanwhile a pull request 
-\footnote{https://github.com/FairRootGroup/FairRoot/issues/736} was done on the FairRoot github which resulted in the official FairMQ repository.
+(Make a special repository for FairMQ, 2018) was done on the FairRoot github which resulted in the official FairMQ repository.
 
 \section{Zookeeper}
 Zookeeper is a program made by Apache (Apache Zookeeper, 2017) to regulate the whole load balancing process. It is run on the Information Node and from there pings to all EPNs to check whether they are online or not. It then creates a list of online EPNs which it gives to the FLPs so that they know to what EPN to send data to. The frequency of these pings are called the Ticktime. 
@@ -47,4 +47,4 @@ The algorithm used in the previous experiment is called a Blacklist Algorithm. T
 
 
 \section{Raspberry Pi}
-Raspberry Pi is a  low cost small computer used for prototyping projects \footnote{https://www.raspberrypi.org/about/}. These projects go from small sensor applications, to bigger host-server applications. The Raspberry Pi used for this research is the model 3 B+ variant. As of the time this report is written this is the latest version released. This model is used because of the high Ethernet speeds on the board itself. The reason a Raspberry Pi was used for this experiment is because it's a smaller and cheaper alternative compared to what the cluster on Nikhef used. (van der Heijden, 2018, p. 21) and because of this, it is more easily expanded.
+Raspberry Pi is a  low cost small computer used for prototyping projects (Raspberry Pi About Us, n.d.). These projects go from small sensor applications, to bigger host-server applications. The Raspberry Pi used for this research is the model 3 B+ variant. As of the time this report is written this is the latest version released. This model is used because of the high Ethernet speeds on the board itself. The reason a Raspberry Pi was used for this experiment is because it's a smaller and cheaper alternative compared to what the cluster on Nikhef used. (van der Heijden, 2018, p. 21) and because of this, it is more easily expanded.

@@ -313,9 +313,9 @@ Ticktime &&&&&& \tabularnewline \hline
 
 \section{Analysis}
 \subsection{Comparison to the previous experiment}
-To calculate the validity of the results, two methods will be used. An analysis of the trend line will be done, and the Pearson correlation will be used. To calculate the trend line, the following equations are used:
+To calculate the validity of the results, two methods will be used. An analysis of the trend line will be done, and the Pearson correlation will be used. To calculate the trend line, the following equations are used:\\
 
-Slope = 
+~\\Slope = 
 \begin{flalign*}
 \hspace*{-5cm}\alpha = \frac{n\sum(xy)-\sum(x)\sum(y)}{n\sum(x^2)-(\sum(x))^2}
 \end{flalign*}
@@ -338,13 +338,13 @@ Slope =
 \end{figure}
 \begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{./graphics/ex1_combined.png}
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{./graphics/ex2_combined.png}
 	\caption{Combined results Experiment 2}
 	\label{fig:Ex2Combined}
 \end{figure}
 \begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{./graphics/ex1_combined.png}
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{./graphics/ex3_combined.png}
 	\caption{Combined results Experiment 3}
 	\label{fig:Ex3Combined}
 \end{figure}
@@ -353,9 +353,9 @@ Slope =
 \resizebox{\textwidth}{!}{\begin{tabular}{| >{\centering}m{2cm} | >{\centering}m{2cm} | >{\centering}m{2cm} | >{\centering}m{2cm} | >{\centering}m{2cm} | >{\centering}m{2cm} | >{\centering}m{2cm} |}
 \hline
 & Slope Pi & Intercept Pi & Slope Nikhef & Intercept Nikhef & First $>$ 1 & Next $+$ 1 \tabularnewline \hline
-Experiment 1 & 0.074 & 1.7 & 0.069 & 0.982 & 63 & 222 \tabularnewline \hline
-Experiment 2 &  &  &  &  &  &  \tabularnewline \hline
-Experiment 3 &  &  &  &  &  &  \tabularnewline 
+Experiment 1 & 0.074 & 1.7 & 0.069 & 0.982 & 64 & 222 \tabularnewline \hline
+Experiment 2 & 1.810 & 10.305 & 1.794 & 4.077 & - & 64 \tabularnewline \hline
+Experiment 3 & 1.622 & 13.216 & 1.783 & 9.072 & - & 6 \tabularnewline 
 \hline
 \end{tabular}}
 \caption{Slope and Intercepts combined experiments}
@@ -364,7 +364,8 @@ Experiment 3 &  &  &  &  &  &  \tabularnewline
 
 \newpage
 
-~\\These figures show that the slopes of the data are only ... away from each other. The intercepts are ... away from each other. This shows that there is a close resemblance to each other.\\~\\
+~\\These figures show that the for the first experiment, the ticktime has to increase by 222 in order for the difference in TF loss be $+$ 1 again. For experiment two this is 64, and for experiment 3 it's the other way around, where the results from Nikhef will end up higher than from the Raspberry Pi. The first time this happens is at ticktime 32. This means that for experiment one and two, the results are closely related to one another. For experiment three the results are a bit different. For every ticktime below 30 the results are closely related. After ticktime 30 the results would have to be further analyzed. The previous experiment already deemed a ticktime above 30 to be less viable as from that point the TF loss will only go up, which is what the algorithm should try to prevent. 
+
 The Pearson correlation is calculated as followed:
 
 \begin{flalign*}
@@ -372,7 +373,7 @@ The Pearson correlation is calculated as followed:
 \end{flalign*}
 
 ~\\ Where $m_{x}$ is the mean of vector $x$, and $m_{y}$ is the mean of vector $y$.
-~\\ A way to calculate this in python is shown in listing ~\ref{lst:PearsonInPython} The results of this can be found in table ~\ref{table:PearsonCor}. The totals of all separate tests are combined to calculate this correlation. If the Pearson correlation is close to 1, it means that there is a strong positve linear correlation. If it's 0 then there is no linear correlation. If it's -1 then there is a strong negative linear correlation. In order to deny the null hypothesis, as in there is no correlation between the two experiments, with a 0.1\% error margin, the correlation value for experiment 1 would have to be $>$= 0.742, for experiment 2 $>$=0.872 and for experiment $>$=0.872\footnote{https://www.radford.edu/jaspelme/statsbook/Chapter\%20files/Table of Critical Values for r.pdf} 
+~\\ A way to calculate this in python is shown in listing ~\ref{lst:PearsonInPython} The results of this can be found in table ~\ref{table:PearsonCor}. The totals of all separate tests are combined to calculate this correlation. If the Pearson correlation is close to 1, it means that there is a strong positve linear correlation. If it's 0 then there is no linear correlation. If it's -1 then there is a strong negative linear correlation. In order to deny the null hypothesis, as in there is no correlation between the two experiments, with a 0.1\% error margin, the correlation value for experiment 1 would have to be $>$= 0.742, for experiment 2 $>$=0.872 and for experiment $>$=0.872(Table of Critical Values for r, n.d.)
 
 \begin{lstlisting}[frame=single,language=Python,caption={Pearson correlation calculation in Python},label={lst:PearsonInPython}]
 from scipy.stats.stats import pearsonr
