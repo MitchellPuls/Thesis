@@ -1,0 +1,28 @@
+#!/usr/bin/env ansible-playbook
+#- hosts: MonitoringSystem
+#  tasks:
+#    - name: Disable collectd
+#      systemd: state=stopped name=collectd
+- hosts: InformationService
+  become: true
+  user: root
+  tasks:
+    - name: Stopping information service
+      shell: pkill -9 InformationNode
+      ignore_errors: yes
+    - name: Stopping zookeeper
+      shell: systemctl stop zookeeper
+- hosts: Flps
+  become: true
+  user: root
+  tasks:
+    - name: Stopping all Flps
+      shell: pkill -9 flp 
+      ignore_errors: yes
+- hosts: Epns
+  become: true
+  user: root
+  tasks:
+    - name: Stopping all Epns
+      shell: pkill -9 epn
+      ignore_errors: yes

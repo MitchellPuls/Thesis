@@ -1,0 +1,26 @@
+#!/usr/bin/env ansible-playbook
+- hosts: Epns
+  become: true
+  user: root
+  tasks:
+    - name: copy binary to epn
+      unarchive: 
+        src: ../binaries/epn.tar.xz
+        dest: /root/
+- hosts: Flps
+  become: true
+  user: root
+  tasks:
+    - name: copy binary to Flp
+      unarchive:
+        src: ../binaries/flp.tar.xz
+        dest: /root/
+- hosts: InformationService
+  become: true
+  user: root
+  tasks:
+    - name: copy binary to InformationService
+      unarchive:
+        src: ../binaries/info.tar.xz
+        dest: /root/
+

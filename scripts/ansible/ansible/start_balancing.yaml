@@ -1,0 +1,51 @@
+#!/usr/bin/env ansible-playbook
+#- hosts: MonitoringSystem
+#  tasks: 
+#    - name: Starts collectd
+#      systemd: state=started name=collectd 
+- hosts: InformationService 
+  become: true
+  user: root
+  tasks:
+  - name: set zookeeper variables
+    lineinfile:
+      name: /etc/zookeeper/conf/zoo.cfg
+      regexp: 'tickTime='
+      line: 'tickTime={{zookeeperTick}}'
+  - name: start zookeeper
+    shell: systemctl start zookeeper 
+  - name: wait for init of zookeeper
+    pause:
+      seconds: 2
+  - name: Start information service
+    args:
+        chdir: /root/InformationNode
+    shell: ./InformationNode --ip {{ inventory_hostname }} --sample-size {{ sample_size }} --daemonize --info-config /root/info.yaml
+    environment:
+        LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/root/O2Balancer/:/root/info/
+        O2Transport: "{{ OTransport }}"
+- hosts: Epns
+  become: true
+  user: root
+  tasks:
+    - name: Start Epns
+      args:
+         chdir: /root/EPN
+      shell: ./epn --ip {{ inventory_hostname }} --amount-flps 1 --daemonize --epn-config /root/epn.yaml
+      environment:
+        LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/root/O2Balancer/:/root/epn/
+        O2Transport: "{{ OTransport }}"
+    - name: Wait for epns to startup
+      pause:
+        seconds: 2 
+- hosts: Flps
+  become: true
+  user: root
+  tasks:
+  - name: Start Flps
+    args:
+        chdir: /root/FLP
+    shell: ./flp --restartFairRoot false --ip {{ inventory_hostname }} --daemonize --flp-config /root/flp.yaml
+    environment:
+        LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/root/O2Balancer/:/root/flp/
+        O2Transport: "{{ OTransport }}"

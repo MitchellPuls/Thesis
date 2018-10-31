@@ -1,0 +1,15 @@
+#!/usr/bin/env ansible-playbook
+# Deploys all the fairroot libraries..
+#
+- hosts: Flps Epns InformationService
+  become: true
+  user: root
+  tasks:
+#        - name: extracting fairsoft...
+#          unarchive:
+#                src: ../libraries/fairsoft.tar.gz
+#                dest: /root/
+        - name: Extracting other dependancies
+          unarchive:
+                src: ../libraries/Olibs.tar.xz
+                dest: /root/

@@ -1,0 +1,31 @@
+#!/usr/bin/env ansible-playbook
+- hosts: Epns
+  become: true
+  user: root
+  tasks:
+   - copy:
+      src: ../configuration/epn.yaml
+      dest: /root/
+      owner: root
+      group: root
+      mode: 0644
+- hosts: Flps
+  become: true
+  user: root
+  tasks:
+   - copy:
+        src: ../configuration/flp.yaml
+        dest: /root/
+        owner: root
+        group: root
+        mode: 0644
+- hosts: InformationService
+  become: true
+  user: root
+  tasks:
+   - copy:
+        src: ../configuration/info.yaml
+        dest : /root/
+        owner: root
+        group: root
+        mode: 0644
